@@ -1,6 +1,32 @@
-*.class
+			  <td width="100" align="left" valign="top"><a href="controller?action=beneficiery.html"><img src="add.jpg" alt="ADD" width="70" height="55" border="0" /></a></td>
+				  <td width="100" align="left" valign="top"><a href="benemodify1.jsp"><img src="modify.jpg" alt="MODIFY" width="70" height="55" border="0" /></a></td>
+				   <td width="180" align="left" valign="top"><a href="removebene.jsp.jsp"><img src="remove.jpg" alt="REMOVE" width="70" height="55" border="0" /></a></td>
 
-# Package Files #
-*.jar
-*.war
-*.ear
+
+				  <td align="left" valign="top"><img src="line1.jpg" width="1" height="55" /></td>
+			
+			</tr>
+			</table>
+		<h2>Select benificiay to modify</h2><select name="BB">
+	
+<%
+ArrayList person=(ArrayList)session.getAttribute("ATT");
+PersonInfo per=null;
+per=(PersonInfo)person.get(0);
+Integer a=per.getcac();
+ Connection con=null ;
+	try{
+		
+		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+		con =DriverManager.getConnection("jdbc:odbc:abc","root","root");
+		String sql="Select * from bene where cac="+a;
+		Statement stmt=con.createStatement();
+	 	ResultSet rs=stmt.executeQuery(sql);
+	 	if(rs.next()){
+	 		
+	 		do
+	 		{
+	 			
+	 		%>
+	 			<option ><%=rs.getInt(2) %></option>
+	 		<%
